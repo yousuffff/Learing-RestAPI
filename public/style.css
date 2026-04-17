@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  padding: 30px;
+}
+.heading {
+  color: blueviolet;
+  text-decoration:wavy ;
+}
+div {
+  margin: 20px;
+  background-color: beige;
+}
+.user {
+  margin: 10px;
+  color: rgb(19, 11, 11);
+  font-style: italic;
+}
+.content{
+    color: brown;
+}
