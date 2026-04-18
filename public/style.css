@@ -8,7 +8,7 @@ body {
 }
 a {
   text-decoration: none;
-  
+
 }
 .heading {
   color: blueviolet;
@@ -26,7 +26,10 @@ div {
 .content {
   color: brown;
 }
+.edit{
+  padding: 10px 20px;
 
+}
 .form-container {
   padding: 10px;
   width: 30%;
@@ -49,4 +52,5 @@ button {
   padding: 10px;
   margin: 10px;
   border-radius: 20px;
+  cursor: pointer;
 }

@@ -2,6 +2,7 @@ import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
 import { v4 as uuidv4 } from "uuid";
+import methodOverride from "method-override";
 
 const app = express();
 const port = 8080;
@@ -26,7 +27,7 @@ let posts = [
       "hey abdul congrats BTW meri shadhi ko ek saal hone wala h . HAHAHAHAAAA",
   },
 ];
-
+app.use(methodOverride("_method"));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
@@ -60,7 +61,31 @@ app.get("/posts/:id", (req, res) => {
   let { id } = req.params;
 
   let post = posts.find((p) => id === p.id);
-  res.render("tweet view.ejs", post);
+  res.render("tweet view.ejs", { post });
+});
+
+app.patch("/posts/:id", (req, res) => {
+  let { id } = req.params;
+  let { content } = req.body;
+
+  let post = posts.find((post) => id === post.id);
+  post.content = content;
+  console.log(post);
+
+  res.redirect("/posts");
+});
+
+app.get("/posts/:id/edit", (req, res) => {
+  let { id } = req.params;
+  let post = posts.find((post) => id === post.id);
+  console.log("this is working");
+  res.render("edit.ejs", { post });
+});
+
+app.delete("/posts/:id", (req, res) => {
+  let { id } = req.params;
+  posts = posts.filter((post) => id !== post.id);
+  res.redirect("/posts");
 });
 
 app.listen(port, () => {
