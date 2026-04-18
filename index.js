@@ -30,8 +30,25 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.get("/", (req, res) => {
+app.get("/posts", (req, res) => {
+  //   let { username, content } = req.body;
+  //   posts.push({ username, content });
+  console.log(req.body);
   res.render("index.ejs", { posts });
+});
+
+app.get("/posts/new", (req, res) => {
+  res.render("new.ejs");
+});
+
+app.post("/posts", (req, res) => {
+  let { username, content } = req.body;
+  if (!username.trim() || !content.trim()) {
+    res.send("Please fill both fields");
+    res.redirect("/posts/new");
+  }
+  posts.push({ username, content });
+  res.redirect("/posts");
 });
 
 app.listen(port, () => {
