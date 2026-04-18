@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Twet view</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <h1>Detail tweet</h1>
+    <div>
+      <p class="id"><%= post.id %></p>
+      <h2 class="user">@<%= post.username %></h2>
+      <h2 class="content"><%= post.content %></h2>
+    </div>
+    <a href="http://localhost:8080/posts">Back to Main page</a>
+  </body>
+</html>
